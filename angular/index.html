@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <!-- Title -->
+    <title>The White Agency Progress Bar Test</title>
+    <!-- Meta -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Cache-control" content="public">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Copia Li">
+    <!-- Stylesheets -->
+	<link rel="stylesheet" href="css/app.min.css" type="text/css" />
+</head>
+<body>
+   <div ng-controller="AppCtrl">
+        <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title" style="display:inline-block">Progress</h3>
+                <button class="btn btn-default pull-right">X</button>
+                <button class="btn btn-default pull-right reset" title="reset" data-ng-click="reset()"><span class="glyphicon glyphicon-repeat"></span></button>                
+            </div>
+            <div class="modal-body" data-ng-class="{'complete':progress===100,'loading':progress<100}">
+                <progressbar max="100" value="progress" animate="false"></progressbar>
+                <div class="text-danger" data-ng-if="error">{{error}}</div>
+                <div class="percentage-text" data-ng-if="!error">
+                    <span data-ng-if="progress<100">Progress {{progress}}%</span>
+                    <div data-ng-if="progress===100">
+                        <span>This task is 100% completed</span>
+                        <span class="glyphicon glyphicon-ok tick-button"></span>
+                    </div>
+                </div>
+            </div>
+        </script>
+    </div>
+
+    <!-- Angular App-->
+    <script src="js/app.min.js"></script>
+</body>
+</html>
